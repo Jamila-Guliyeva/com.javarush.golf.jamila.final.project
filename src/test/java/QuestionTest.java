@@ -53,4 +53,10 @@ public class QuestionTest {
         question.setLast(true);
         Assertions.assertEquals(true, question.isLast());
     }
+
+    @Test
+    void questionEqualsMethodTest(){
+        Question expected = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
+        Assertions.assertEquals(expected, question);
+    }
 }

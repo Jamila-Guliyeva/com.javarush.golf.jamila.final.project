@@ -45,4 +45,10 @@ public class AnswerTest {
         answer.setNextQuestionId(7);
         Assertions.assertEquals(7, answer.getNextQuestionId());
     }
+
+    @Test
+    void equalsMethodTest(){
+        Answer expected = new Answer("Принять вызов", 2, 4);
+        Assertions.assertEquals(expected, answer);
+    }
 }
