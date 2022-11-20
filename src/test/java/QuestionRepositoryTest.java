@@ -27,7 +27,7 @@ QuestionRepository questionRepository = new QuestionRepository(Map.of(1, new Que
     void findAQuestionByIdTest(){
         Question expected = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
 
-        Assertions.assertEquals(expected, questionRepository.findAQuestionById(1));
+        Assertions.assertEquals(expected, questionRepository.findQuestionById(1));
     }
 
     @Test

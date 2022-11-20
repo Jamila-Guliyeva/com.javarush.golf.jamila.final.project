@@ -13,7 +13,7 @@ public class QuestionRepository {
         this.idToQuestion = idToQuestion;
     }
 
-    public Question findAQuestionById(Integer id){
+    public Question findQuestionById(Integer id){
         return idToQuestion.get(id);
     }
 
@@ -21,10 +21,4 @@ public class QuestionRepository {
         return idToQuestion;
     }
 
-    @Override
-    public String toString() {
-        return "QuestionRepository{" +
-                "idToQuestion=" + idToQuestion +
-                '}';
-    }
 }

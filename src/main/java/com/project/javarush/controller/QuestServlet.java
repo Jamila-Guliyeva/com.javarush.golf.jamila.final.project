@@ -28,8 +28,8 @@ public class QuestServlet extends HttpServlet {
     @Override
     public void init() {
         jsonParser = new JSONParser();
-        questionRepository = jsonParser.parseQuestionMap(new File("C:\\Users\\Jama\\Desktop\\Java\\demo3\\src\\main\\resources\\questionsList.json"));
-        answerRepository = jsonParser.parseAnswerMap(new File("C:\\Users\\Jama\\Desktop\\Java\\demo3\\src\\main\\resources\\answersList.json"));
+        questionRepository = jsonParser.parseQuestionMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\questionsList.json"));
+        answerRepository = jsonParser.parseAnswerMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\answersList.json"));
 
         try{
             super.init();
@@ -47,7 +47,7 @@ public class QuestServlet extends HttpServlet {
             nextQuestionId = Integer.parseInt(request.getParameter("nextQuestionId"));
         } else nextQuestionId = 1;
 
-        Question question = questionRepository.findAQuestionById(nextQuestionId);
+        Question question = questionRepository.findQuestionById(nextQuestionId);
         Integer questionId = question.getId();
         String questionText = question.getQuestionText();
         boolean isLast = question.isLast();

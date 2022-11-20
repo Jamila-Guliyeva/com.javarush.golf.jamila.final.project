@@ -1,10 +1,11 @@
 package com.project.javarush.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import java.util.List;
 import java.util.Objects;
-
+@JsonTypeName
 public class Question {
 
     private Integer id;
