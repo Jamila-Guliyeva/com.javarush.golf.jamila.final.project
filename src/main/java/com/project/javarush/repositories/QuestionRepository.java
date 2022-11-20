@@ -7,14 +7,18 @@ import java.util.Optional;
 
 public class QuestionRepository {
 
-    private final Map<Long, Question> idToQuestion;
+    private final Map<Integer, Question> idToQuestion;
 
-    public QuestionRepository(Map<Long, Question> idToQuestion) {
+    public QuestionRepository(Map<Integer, Question> idToQuestion) {
         this.idToQuestion = idToQuestion;
     }
 
-    public Question findAQuestionById(long id){
-        return Optional.ofNullable(idToQuestion.get(id)).get();
+    public Question findAQuestionById(Integer id){
+        return idToQuestion.get(id);
+    }
+
+    public Map<Integer, Question> getIdToQuestion() {
+        return idToQuestion;
     }
 
     @Override
