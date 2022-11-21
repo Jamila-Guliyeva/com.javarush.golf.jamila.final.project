@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +29,8 @@ public class QuestServlet extends HttpServlet {
     @Override
     public void init() {
         jsonParser = new JSONParser();
-        questionRepository = jsonParser.parseQuestionMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\questionsList.json"));
-        answerRepository = jsonParser.parseAnswerMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\answersList.json"));
+        questionRepository = jsonParser.parseQuestionMap(QuestServlet.class.getClassLoader().getResourceAsStream("questionsList.json"));
+        answerRepository = jsonParser.parseAnswerMap(QuestServlet.class.getClassLoader().getResourceAsStream("answersList.json"));
 
         try{
             super.init();

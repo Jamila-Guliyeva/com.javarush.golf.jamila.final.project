@@ -1,3 +1,4 @@
+import com.project.javarush.controller.QuestServlet;
 import com.project.javarush.entity.Answer;
 import com.project.javarush.entity.Question;
 import com.project.javarush.repositories.AnswerRepository;
@@ -30,7 +31,7 @@ public class JsonParserTest {
             13, new Question(13, "Ты рассказал правду о себе! Тебя вернули домой", List.of(), true)));
     @Test
     void parseAnswerMapTest(){
-        AnswerRepository expected = parser.parseAnswerMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\answersList.json"));
+        AnswerRepository expected = parser.parseAnswerMap(JsonParserTest.class.getClassLoader().getResourceAsStream("answersList.json"));
         Assertions.assertAll(() ->  Assertions.assertEquals(expected.findAnswerById(2), answerRepository.findAnswerById(2)),
                 () -> Assertions.assertEquals(expected.findAnswerById(3), answerRepository.findAnswerById(3)),
                 () -> Assertions.assertEquals(expected.findAnswerById(5), answerRepository.findAnswerById(5)),
@@ -40,7 +41,7 @@ public class JsonParserTest {
     }
     @Test
     void parseQuestionMapTest(){
-        QuestionRepository expected = parser.parseQuestionMap(new File("C:\\Users\\Jama\\Desktop\\Java\\com.javarush.golf.jamila.final.project\\src\\main\\resources\\questionsList.json"));
+        QuestionRepository expected = parser.parseQuestionMap(JsonParserTest.class.getClassLoader().getResourceAsStream("questionsList.json"));
         Assertions.assertAll(() ->  Assertions.assertEquals(expected.findQuestionById(1), questionRepository.findQuestionById(1)),
                 () -> Assertions.assertEquals(expected.findQuestionById(4), questionRepository.findQuestionById(4)),
                 () -> Assertions.assertEquals(expected.findQuestionById(9), questionRepository.findQuestionById(9)),

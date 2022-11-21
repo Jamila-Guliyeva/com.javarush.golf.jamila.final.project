@@ -9,6 +9,7 @@ import com.project.javarush.repositories.QuestionRepository;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class JSONParser {
@@ -20,12 +21,12 @@ public class JSONParser {
     MyServlet.class.getClassLoader().getResourceAsStream("my.json")
 
      */
-    public QuestionRepository parseQuestionMap(File jsonQuestionFile){
+    public QuestionRepository parseQuestionMap(InputStream jsonQuestionFile){
 
-        File questionListJson = jsonQuestionFile;
+
         ObjectMapper mapper = new ObjectMapper();
         try {
-            questionRepository = new QuestionRepository(mapper.readValue(questionListJson,
+            questionRepository = new QuestionRepository(mapper.readValue(jsonQuestionFile,
                     new TypeReference<HashMap<Integer, Question>>() {
             }));
         } catch (IOException e) {
@@ -34,11 +35,11 @@ public class JSONParser {
         return questionRepository;
     }
 
-    public AnswerRepository parseAnswerMap(File jsonAnswerFile){
-        File answerListJson = jsonAnswerFile;
+    public AnswerRepository parseAnswerMap(InputStream jsonAnswerFile){
+
         ObjectMapper mapper = new ObjectMapper();
         try {
-            answerRepository = new AnswerRepository(mapper.readValue(answerListJson,
+            answerRepository = new AnswerRepository(mapper.readValue(jsonAnswerFile,
                     new TypeReference<HashMap<Integer, Answer>>() {
             }));
         } catch (IOException e) {
