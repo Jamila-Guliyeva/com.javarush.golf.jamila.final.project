@@ -7,7 +7,6 @@ import com.project.javarush.entity.Question;
 import com.project.javarush.repositories.AnswerRepository;
 import com.project.javarush.repositories.QuestionRepository;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -16,11 +15,6 @@ public class JSONParser {
     private QuestionRepository questionRepository;
     private AnswerRepository answerRepository;
 
-
-    /*
-    MyServlet.class.getClassLoader().getResourceAsStream("my.json")
-
-     */
     public QuestionRepository parseQuestionMap(InputStream jsonQuestionFile){
 
 

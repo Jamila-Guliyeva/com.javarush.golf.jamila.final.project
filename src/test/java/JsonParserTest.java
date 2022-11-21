@@ -7,7 +7,6 @@ import com.project.javarush.services.JSONParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 
