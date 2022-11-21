@@ -17,7 +17,6 @@ public class JSONParser {
 
     public QuestionRepository parseQuestionMap(InputStream jsonQuestionFile){
 
-
         ObjectMapper mapper = new ObjectMapper();
         try {
             questionRepository = new QuestionRepository(mapper.readValue(jsonQuestionFile,

@@ -17,12 +17,7 @@ QuestionRepository questionRepository = new QuestionRepository(Map.of(1, new Que
         12, new Question(12, "Твою ложь разоблачили! Поражение", List.of(), true),
         13, new Question(13, "Ты рассказал правду о себе! Тебя вернули домой", List.of(), true)));
 
-/*
-    public Map<Integer, Question> getIdToQuestion() {
-        return idToQuestion;
-    }
 
- */
     @Test
     void findAQuestionByIdTest(){
         Question expected = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);

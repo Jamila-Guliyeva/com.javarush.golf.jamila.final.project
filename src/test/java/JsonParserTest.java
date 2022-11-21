@@ -1,4 +1,3 @@
-import com.project.javarush.controller.QuestServlet;
 import com.project.javarush.entity.Answer;
 import com.project.javarush.entity.Question;
 import com.project.javarush.repositories.AnswerRepository;

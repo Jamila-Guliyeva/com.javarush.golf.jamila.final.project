@@ -6,8 +6,6 @@ import java.util.List;
 
 public class QuestionTest {
 
-    //  "1":{"id":1,"questionText":"Ты потерял память. Принять вызов НЛО?","answersIdList":[2,3],"isLast":false},
-
     Question question = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
 
     @Test
