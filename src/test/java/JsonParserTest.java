@@ -50,5 +50,4 @@ public class JsonParserTest {
                 () -> Assertions.assertEquals(expected.findQuestionById(13), questionRepository.findQuestionById(13)));
     }
 
-
 }

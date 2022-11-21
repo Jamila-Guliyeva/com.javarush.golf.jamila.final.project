@@ -56,7 +56,8 @@ public class QuestionTest {
 
     @Test
     void questionEqualsMethodTest(){
-        Question expected = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
-        Assertions.assertEquals(expected, question);
+        Question testQuestion = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
+        boolean expected = testQuestion.equals(question);
+        Assertions.assertTrue(expected);
     }
 }

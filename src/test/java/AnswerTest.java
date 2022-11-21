@@ -48,7 +48,8 @@ public class AnswerTest {
 
     @Test
     void equalsMethodTest(){
-        Answer expected = new Answer("Принять вызов", 2, 4);
-        Assertions.assertEquals(expected, answer);
+        Answer testAnswer = new Answer("Принять вызов", 2, 4);
+        boolean expected = testAnswer.equals(answer);
+        Assertions.assertTrue(expected);
     }
 }
