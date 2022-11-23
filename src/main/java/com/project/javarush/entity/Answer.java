@@ -2,6 +2,7 @@ package com.project.javarush.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.project.javarush.annotation.Generated;
 
 import java.util.Objects;
 
@@ -45,14 +46,22 @@ public class Answer {
         this.nextQuestionId = nextQuestionId;
     }
 
+    @Generated
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Answer answer = (Answer) o;
-        return Objects.equals(answerText, answer.answerText) && Objects.equals(id, answer.id) && Objects.equals(nextQuestionId, answer.nextQuestionId);
+        return Objects.equals(answerText, answer.answerText) &&
+                Objects.equals(id, answer.id) &&
+                Objects.equals(nextQuestionId, answer.nextQuestionId);
     }
 
+    @Generated
     @Override
     public int hashCode() {
         return Objects.hash(answerText, id, nextQuestionId);

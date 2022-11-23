@@ -3,11 +3,7 @@ import com.project.javarush.entity.Answer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class AnswerTest {
-
-    //"2":{"answerText":"Принять вызов","id":2,"nextQuestionId":4},
-
-
+ class AnswerTest {
     Answer answer = new Answer("Принять вызов", 2, 4);
 
     @Test
@@ -44,12 +40,5 @@ public class AnswerTest {
     void setNextQuestionIdTest(){
         answer.setNextQuestionId(7);
         Assertions.assertEquals(7, answer.getNextQuestionId());
-    }
-
-    @Test
-    void equalsMethodTest(){
-        Answer testAnswer = new Answer("Принять вызов", 2, 4);
-        boolean expected = testAnswer.equals(answer);
-        Assertions.assertTrue(expected);
     }
 }

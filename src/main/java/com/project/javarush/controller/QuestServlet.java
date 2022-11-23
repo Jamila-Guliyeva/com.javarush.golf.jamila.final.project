@@ -3,8 +3,8 @@ package com.project.javarush.controller;
 import com.project.javarush.entity.Answer;
 import com.project.javarush.entity.Question;
 import com.project.javarush.repositories.AnswerRepository;
+import com.project.javarush.repositories.ApplicationRepository;
 import com.project.javarush.repositories.QuestionRepository;
-import com.project.javarush.services.JSONParser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,18 +22,18 @@ import java.util.List;
 public class QuestServlet extends HttpServlet {
     QuestionRepository questionRepository;
     AnswerRepository answerRepository;
-    JSONParser jsonParser;
+    ApplicationRepository applicationRepository;
 
     @Override
     public void init() {
-        jsonParser = new JSONParser();
-        questionRepository = jsonParser.parseQuestionMap(QuestServlet.class.getClassLoader().getResourceAsStream("questionsList.json"));
-        answerRepository = jsonParser.parseAnswerMap(QuestServlet.class.getClassLoader().getResourceAsStream("answersList.json"));
+        applicationRepository = new ApplicationRepository();
 
-        try{
+        try {
+            questionRepository = applicationRepository.getQuestionRepository("questionsList.json");
+            answerRepository = applicationRepository.getAnswerRepository("answersList.json");
             super.init();
-        } catch(ServletException e){
-            throw new RuntimeException(e);
+        } catch (IOException | ServletException e) {
+            e.printStackTrace();
         }
     }
 
@@ -63,22 +64,18 @@ public class QuestServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/quest.jsp");
         try {
             dispatcher.forward(request, response);
-        } catch (RuntimeException e) {
-            try {
-                response.sendRedirect("/WEB-INF/error.jsp");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        }  catch (ServletException | IOException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         HttpSession session = request.getSession();
         String name = request.getParameter("name");
 
@@ -88,8 +85,7 @@ public class QuestServlet extends HttpServlet {
             try {
                 response.sendRedirect("quest.jsp");
             } catch (IOException e) {
-                response.sendRedirect("/WEB-INF/error.jsp");
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         doGet(request, response);

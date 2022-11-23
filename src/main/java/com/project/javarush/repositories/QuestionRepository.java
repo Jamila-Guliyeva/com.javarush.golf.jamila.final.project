@@ -16,8 +16,4 @@ public class QuestionRepository {
         return idToQuestion.get(id);
     }
 
-    public Map<Integer, Question> getIdToQuestion() {
-        return idToQuestion;
-    }
-
 }

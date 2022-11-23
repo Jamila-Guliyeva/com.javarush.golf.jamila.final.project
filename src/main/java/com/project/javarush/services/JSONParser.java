@@ -4,41 +4,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.javarush.entity.Answer;
 import com.project.javarush.entity.Question;
-import com.project.javarush.repositories.AnswerRepository;
-import com.project.javarush.repositories.QuestionRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 
 public class JSONParser {
-    private QuestionRepository questionRepository;
-    private AnswerRepository answerRepository;
 
-    public QuestionRepository parseQuestionMap(InputStream jsonQuestionFile){
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            questionRepository = new QuestionRepository(mapper.readValue(jsonQuestionFile,
-                    new TypeReference<HashMap<Integer, Question>>() {
-            }));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return questionRepository;
+    public Map<Integer, Question> parseQuestionMap(InputStream jsonAnswerFile, ObjectMapper mapper) throws IOException {
+        return new HashMap<>(mapper.readValue(jsonAnswerFile, new TypeReference<HashMap<Integer, Question>>() {}));
     }
 
-    public AnswerRepository parseAnswerMap(InputStream jsonAnswerFile){
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            answerRepository = new AnswerRepository(mapper.readValue(jsonAnswerFile,
-                    new TypeReference<HashMap<Integer, Answer>>() {
-            }));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return answerRepository;
+    public Map<Integer, Answer> parseAnswerMap(InputStream jsonAnswerFile, ObjectMapper mapper) throws IOException {
+        return new HashMap<>(mapper.readValue(jsonAnswerFile,
+                new TypeReference<HashMap<Integer, Answer>>() {
+                }));
     }
 }

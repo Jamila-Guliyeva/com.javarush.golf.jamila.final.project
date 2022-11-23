@@ -1,6 +1,5 @@
 package com.project.javarush.repositories;
 
-
 import com.project.javarush.entity.Answer;
 
 import java.util.Map;
@@ -18,7 +17,4 @@ public class AnswerRepository {
         return idToAnswer.get(id);
     }
 
-    public Map<Integer, Answer> getIdToAnswer() {
-        return idToAnswer;
-    }
 }

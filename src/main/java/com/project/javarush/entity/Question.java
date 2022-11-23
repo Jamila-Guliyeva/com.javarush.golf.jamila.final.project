@@ -2,6 +2,7 @@ package com.project.javarush.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.project.javarush.annotation.Generated;
 
 import java.util.List;
 import java.util.Objects;
@@ -54,14 +55,23 @@ public class Question {
         isLast = last;
     }
 
+    @Generated
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Question question = (Question) o;
-        return isLast == question.isLast && Objects.equals(id, question.id) && Objects.equals(questionText, question.questionText) && Objects.equals(answersIdList, question.answersIdList);
+        return isLast == question.isLast &&
+                Objects.equals(id, question.id) &&
+                Objects.equals(questionText, question.questionText) &&
+                Objects.equals(answersIdList, question.answersIdList);
     }
 
+    @Generated
     @Override
     public int hashCode() {
         return Objects.hash(id, questionText, answersIdList, isLast);

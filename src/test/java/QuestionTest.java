@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class QuestionTest {
+ class QuestionTest {
 
     Question question = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
 
@@ -48,14 +48,10 @@ public class QuestionTest {
 
     @Test
     void ifQuestionIsLast(){
+        boolean originalValue = question.isLast();
         question.setLast(true);
         Assertions.assertEquals(true, question.isLast());
+        question.setLast(originalValue);
     }
 
-    @Test
-    void questionEqualsMethodTest(){
-        Question testQuestion = new Question(1, "Ты потерял память. Принять вызов НЛО?", List.of(2, 3), false);
-        boolean expected = testQuestion.equals(question);
-        Assertions.assertTrue(expected);
-    }
 }
