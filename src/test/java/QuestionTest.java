@@ -36,8 +36,8 @@ import java.util.List;
 
     @Test
     void questionSetTextTest(){
-        question.setQuestionText("Test");
-        Assertions.assertEquals("Test", question.getQuestionText());
+        question.setQuestionText("Test.txt");
+        Assertions.assertEquals("Test.txt", question.getQuestionText());
     }
 
     @Test
@@ -53,5 +53,4 @@ import java.util.List;
         Assertions.assertEquals(true, question.isLast());
         question.setLast(originalValue);
     }
-
 }

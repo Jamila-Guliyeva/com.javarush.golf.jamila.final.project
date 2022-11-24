@@ -27,12 +27,12 @@ public class QuestServlet extends HttpServlet {
     @Override
     public void init() {
         applicationRepository = new ApplicationRepository();
+        questionRepository = applicationRepository.getQuestionRepository("questionsList.json");
+        answerRepository = applicationRepository.getAnswerRepository("answersList.json");
 
         try {
-            questionRepository = applicationRepository.getQuestionRepository("questionsList.json");
-            answerRepository = applicationRepository.getAnswerRepository("answersList.json");
             super.init();
-        } catch (IOException | ServletException e) {
+        } catch (ServletException e) {
             e.printStackTrace();
         }
     }
@@ -40,10 +40,15 @@ public class QuestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
-        Integer nextQuestionId;
+        Integer nextQuestionId = 1;
 
         if ((request.getParameter("nextQuestionId") != null)) {
-            nextQuestionId = Integer.parseInt(request.getParameter("nextQuestionId"));
+            try {
+                nextQuestionId = Integer.parseInt(request.getParameter("nextQuestionId"));
+            }
+            catch (NumberFormatException e){
+                e.printStackTrace();
+            }
         } else nextQuestionId = 1;
 
         Question question = questionRepository.findQuestionById(nextQuestionId);

@@ -8,7 +8,6 @@ import java.util.Objects;
 
 @JsonTypeName
 public class Answer {
-
     private String answerText;
     private Integer id;
     private Integer nextQuestionId;

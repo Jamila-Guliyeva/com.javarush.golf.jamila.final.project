@@ -12,13 +12,21 @@ import java.util.Map;
 
 public class JSONParser {
 
-    public Map<Integer, Question> parseQuestionMap(InputStream jsonAnswerFile, ObjectMapper mapper) throws IOException {
-        return new HashMap<>(mapper.readValue(jsonAnswerFile, new TypeReference<HashMap<Integer, Question>>() {}));
+    public Map<Integer, Question> parseQuestionMap(InputStream jsonAnswerFile, ObjectMapper mapper) {
+        try {
+            return new HashMap<>(mapper.readValue(jsonAnswerFile, new TypeReference<Map<Integer, Question>>() {}));
+        } catch (IOException | IllegalArgumentException e) {
+            throw new RuntimeException("Parsing Error!");
+        }
     }
 
-    public Map<Integer, Answer> parseAnswerMap(InputStream jsonAnswerFile, ObjectMapper mapper) throws IOException {
-        return new HashMap<>(mapper.readValue(jsonAnswerFile,
-                new TypeReference<HashMap<Integer, Answer>>() {
-                }));
+    public Map<Integer, Answer> parseAnswerMap(InputStream jsonAnswerFile, ObjectMapper mapper) {
+        try {
+            return new HashMap<>(mapper.readValue(jsonAnswerFile,
+                    new TypeReference<Map<Integer, Answer>>() {
+                    }));
+        } catch (IOException | IllegalArgumentException e) {
+            throw new RuntimeException("Parsing Error!");
+        }
     }
 }

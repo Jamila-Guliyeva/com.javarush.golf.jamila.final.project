@@ -26,8 +26,8 @@ import org.junit.jupiter.api.Test;
 
     @Test
     void setAnswerTextTest(){
-        answer.setAnswerText("Test");
-        Assertions.assertEquals("Test", answer.getAnswerText());
+        answer.setAnswerText("Test.txt");
+        Assertions.assertEquals("Test.txt", answer.getAnswerText());
     }
 
     @Test

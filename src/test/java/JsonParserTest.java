@@ -49,4 +49,30 @@ class JsonParserTest {
                 () -> Assertions.assertEquals(expected.get(12), questionRepositoryMap.get(12)),
                 () -> Assertions.assertEquals(expected.get(13), questionRepositoryMap.get(13)));
     }
+
+    @Test
+    void checkIfQuestionParserThrowsException(){
+        Assertions.assertThrows(RuntimeException.class,
+        () -> parser.parseQuestionMap(JsonParserTest.class.getClassLoader().getResourceAsStream("123Text.txt"), mapper));
+    }
+
+    @Test
+    void checkIfAnswerParserThrowsException(){
+        Assertions.assertThrows(RuntimeException.class,
+                () -> parser.parseAnswerMap(JsonParserTest.class.getClassLoader().getResourceAsStream("123Text.txt"), mapper));
+    }
+
+    @Test
+    void checkAnswerParserExceptionMessage(){
+        Throwable expectedException = Assertions.assertThrows(RuntimeException.class,
+                () -> parser.parseAnswerMap(JsonParserTest.class.getClassLoader().getResourceAsStream("123Text.txt"), mapper));
+        Assertions.assertEquals("Parsing Error!", expectedException.getMessage());
+    }
+
+    @Test
+    void checkQuestionParserExceptionMessage(){
+        Throwable expectedException = Assertions.assertThrows(RuntimeException.class,
+                () -> parser.parseQuestionMap(JsonParserTest.class.getClassLoader().getResourceAsStream("123Text.txt"), mapper));
+        Assertions.assertEquals("Parsing Error!", expectedException.getMessage());
+    }
 }
