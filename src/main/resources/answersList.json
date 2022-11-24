@@ -1,0 +1,8 @@
+{
+  "2":{"answerText":"Принять вызов","id":2,"nextQuestionId":4},
+  "3":{"answerText":"Отклонить вызов","id":3,"nextQuestionId":10},
+  "5":{"answerText":"Подняться на мостик","id":5,"nextQuestionId":9},
+  "6":{"answerText":"Отказаться подниматься на мостик","id":6,"nextQuestionId":11},
+  "8":{"answerText":"Рассказать правду о себе","id":8,"nextQuestionId":13},
+  "9":{"answerText":"Солгать о себе","id":9,"nextQuestionId":12}
+}
